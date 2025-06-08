@@ -1,17 +1,17 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-const UserManagement = () => {
+const MyPurchases = () => {
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
-        Gestión de usuarios
+        Historial de compras
       </Typography>
       <Typography>
-        Consulta, edita y elimina cuentas de clientes y empleados. Controla el estado y permisos de cada usuario.
+        Aquí puedes ver todas las compras que has realizado en la tienda de PetCare360.
       </Typography>
     </Box>
   );
 };
 
-export default UserManagement;
+export default MyPurchases;

@@ -7,6 +7,8 @@ import {
   MenuItem
 } from '@mui/material';
 import FormField from '../../components/common/FormField';
+import dayjs from 'dayjs';
+import DateField from '../../components/common/DateField'; // ✅ Componente fecha formateada
 import api from '../../services/api';
 
 const perfiles = ['VETERINARIO', 'AUXILIAR', 'TECNICO'];
@@ -16,7 +18,7 @@ const RegisterEmployeeForm = () => {
     name: '',
     lastName1: '',
     lastName2: '',
-    recoveryEmail: '', // ← CAMBIADO aquí
+    recoveryEmail: '',
     profile: '',
     startDate: ''
   });
@@ -41,7 +43,7 @@ const RegisterEmployeeForm = () => {
         name: '',
         lastName1: '',
         lastName2: '',
-        recoveryEmail: '', // ← CAMBIADO aquí
+        recoveryEmail: '',
         profile: '',
         startDate: ''
       });
@@ -70,11 +72,10 @@ const RegisterEmployeeForm = () => {
       <FormField
         label="Correo personal"
         type="email"
-        name="recoveryEmail" // ← CAMBIADO aquí
+        name="recoveryEmail"
         value={formData.recoveryEmail}
         onChange={handleChange}
       />
-
       <FormField
         label="Perfil"
         name="profile"
@@ -89,15 +90,17 @@ const RegisterEmployeeForm = () => {
         ))}
       </FormField>
 
-      <FormField
+      <DateField
         label="Fecha de inicio"
-        type="date"
         name="startDate"
         value={formData.startDate}
-        onChange={handleChange}
-        InputLabelProps={{ shrink: true }}
+        onChange={(e) =>
+          setFormData((prev) => ({
+            ...prev,
+            startDate: e.target.value,
+          }))
+        }
       />
-
       <Button type="submit" variant="contained" fullWidth sx={{ mt: 3 }}>
         Registrar empleado
       </Button>

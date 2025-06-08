@@ -7,7 +7,6 @@ const FormField = ({ label, type = 'text', name, value, onChange }) => (
     name={name}
     type={type}
     fullWidth
-    required
     margin="normal"
     variant="outlined"
     value={value}

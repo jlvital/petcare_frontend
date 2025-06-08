@@ -1,17 +1,17 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-const ProfileView = () => {
+const MyBookings = () => {
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
-        Información del perfil
+        Historial de citas
       </Typography>
       <Typography>
-        Aquí podrás ver y actualizar tu información personal como nombre, correo y foto de perfil.
+        Consulta tus próximas citas, revisa citas pasadas y gestiona tus reservas fácilmente.
       </Typography>
     </Box>
   );
 };
 
-export default ProfileView;
+export default MyBookings;

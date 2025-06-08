@@ -1,17 +1,17 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-const AppointmentManagement = () => {
+const MedicalReport = () => {
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
-        Gestión de citas
+        Historial médico de mascotas
       </Typography>
       <Typography>
-        Consulta, confirma o modifica las citas asignadas a tu perfil. Las citas con menos de 72h no pueden anularse.
+        Consulta y actualiza el historial médico, diagnósticos y tratamientos de cada mascota.
       </Typography>
     </Box>
   );
 };
 
-export default AppointmentManagement;
+export default MedicalReport;

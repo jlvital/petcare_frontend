@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; // 👈 Nuevo import
 import api from '../../services/api';
 import FormField from '../../components/common/FormField';
-import CustomSnackbar from '../../components/common/CustomSnackbar'; // ✅ nuevo import
+import CustomSnackbar from '../../components/common/CustomSnackbar';
 
-const RequestPasswordRecoveryForm = () => {
+const RecoveryForm = () => {
   const [email, setEmail] = useState('');
+  const navigate = useNavigate(); // 👈 Hook de navegación
 
-  // ✅ Snackbar state
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
@@ -18,15 +19,21 @@ const RequestPasswordRecoveryForm = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post('/auth/request-password-recovery', { email });
+      const response = await api.post('/auth/request-recovery', { email });
 
       setSnackbar({
         open: true,
-        message: response.data || '✅ Enlace de recuperación enviado.',
+        message: response.data?.message || '✅ Enlace de recuperación enviado correctamente.',
         severity: 'success'
       });
+
+      // 👇 Espera 2 segundos antes de redirigir al inicio
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+
     } catch (err) {
-      const errorMsg = err.response?.data || "❌ No se pudo procesar la solicitud.";
+      const errorMsg = err.response?.data?.message || "❌ No se pudo procesar la solicitud.";
       setSnackbar({
         open: true,
         message: errorMsg,
@@ -59,7 +66,6 @@ const RequestPasswordRecoveryForm = () => {
         Enviar enlace de recuperación
       </Button>
 
-      {/* ✅ Snackbar render */}
       <CustomSnackbar
         open={snackbar.open}
         message={snackbar.message}
@@ -70,4 +76,4 @@ const RequestPasswordRecoveryForm = () => {
   );
 };
 
-export default RequestPasswordRecoveryForm;
+export default RecoveryForm;

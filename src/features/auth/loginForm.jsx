@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
-import { Button, Typography, Box } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useauth';
-import api from "../../services/api";
-import FormField from "../../components/common/FormField";
-import CustomSnackbar from '../../components/common/CustomSnackbar'; // ✅
+import useAuth from '../../hooks/useAuth';
+import api from '../../services/api';
+import FormField from '../../components/common/FormField';
+import PasswordField from '../../components/common/PasswordField';
+import CustomSnackbar from '../../components/common/CustomSnackbar';
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
-
   const [formData, setFormData] = useState({ username: '', password: '' });
-
-  // ✅ Estado Snackbar
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: '',
-    severity: 'error'
-  });
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'error' });
 
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -30,77 +24,78 @@ const LoginForm = () => {
     try {
       const response = await api.post('/auth/login', formData);
       const { token, name, username, role } = response.data;
-
       login({ name, username, role }, token);
 
       if (role === 'ADMIN') navigate('/admin/dashboard');
       else if (role === 'CLIENTE') navigate('/client/dashboard');
       else if (role === 'EMPLEADO') navigate('/employee/dashboard');
-      else {
-        setSnackbar({
-          open: true,
-          message: 'Rol desconocido. Contacta con el administrador.',
-          severity: 'error'
-        });
-      }
-
+      else throw new Error('Rol desconocido');
     } catch (err) {
       const message = err.response?.data?.message || '❌ Error al iniciar sesión.';
-
       if (message === 'TEMP_LOGIN') {
         sessionStorage.setItem('tempUser', formData.username);
         navigate('/change-password');
       } else {
-        setSnackbar({
-          open: true,
-          message,
-          severity: 'error'
-        });
+        setSnackbar({ open: true, message, severity: 'error' });
       }
     }
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      className="max-w-md mx-auto mt-10 bg-white p-8 rounded-xl shadow-md"
-    >
-      <Typography variant="h5" className="text-center mb-6">
-        Iniciar Sesión
-      </Typography>
+    <form onSubmit={handleSubmit}>
+      <Typography variant="h5" className="mb-4">Iniciar Sesión</Typography>
 
       <FormField
         label="Correo electrónico"
         type="email"
+        name="username"
         value={formData.username}
-        onChange={(e) => handleChange({ target: { name: 'username', value: e.target.value } })}
-      />
-      <FormField
-        label="Contraseña"
-        type="password"
-        value={formData.password}
-        onChange={(e) => handleChange({ target: { name: 'password', value: e.target.value } })}
+        onChange={handleChange}
       />
 
-      <Button type="submit" variant="contained" fullWidth className="mt-6">
+      <PasswordField
+        name="password"
+        value={formData.password}
+        onChange={handleChange}
+      />
+
+      <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
         Entrar
       </Button>
 
-      <Typography variant="body2" className="mt-4 text-center">
+      <Button
+        variant="outlined"
+        fullWidth
+        sx={{ mt: 2, backgroundColor: '#fff', color: '#000', gap: 1 }}
+        startIcon={
+          <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            alt="Google"
+            style={{ width: 20, height: 20 }}
+          />
+        }
+        onClick={() =>
+          window.location.href =
+          import.meta.env.VITE_GOOGLE_LOGIN_URL || 'http://localhost:8080/oauth2/authorization/google'
+        }
+      >
+        Iniciar sesión con Google
+      </Button>
+      
+
+      <Typography variant="body2" className="mt-4">
         <Link to="/forgot-password" className="text-blue-600 hover:underline">
           ¿Has olvidado tu contraseña?
         </Link>
       </Typography>
 
-      {/* ✅ Snackbar */}
       <CustomSnackbar
         open={snackbar.open}
         message={snackbar.message}
         severity={snackbar.severity}
         onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
       />
-    </Box>
+    </form>
   );
 };
 

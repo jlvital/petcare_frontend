@@ -1,17 +1,17 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
 
-const PurchaseHistory = () => {
+const EmployeeBookings = () => {
   return (
     <Box>
       <Typography variant="h6" gutterBottom>
-        Historial de compras
+        Gestión de citas
       </Typography>
       <Typography>
-        Aquí puedes ver todas las compras que has realizado en la tienda de PetCare360.
+        Consulta, confirma o modifica las citas asignadas a tu perfil. Las citas con menos de 72h no pueden anularse.
       </Typography>
     </Box>
   );
 };
 
-export default PurchaseHistory;
+export default EmployeeBookings;

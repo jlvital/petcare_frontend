@@ -1,22 +1,18 @@
 import React from 'react';
-import { Container } from '@mui/material';
-import HeroSection from '../features/home/heroSection';
-import ServiceCarousel from '../features/home/serviceCarousel';
-import ProductShowcase from '../features/home/productShowcase';
-import TestimonialList from '../features/home/testimonialList';
+import { Container, Box } from '@mui/material';
+import HeroSection from '../features/home/HeroSection';
+import TestimonialList from '../features/home/TestimonialList';
 
 const Home = () => {
   return (
-    <div className="bg-white min-h-screen">
-  <HeroSection /> 
-  <div className="bg-[#f0f9f9] py-12">
-    <Container maxWidth="lg">
-      <ServiceCarousel />
-      <ProductShowcase />
-      <TestimonialList />
-    </Container>
-  </div>
-</div>
+    <Box className="bg-white">
+      <HeroSection />
+      <Box className="py-20">
+        <Container maxWidth="lg">
+          <TestimonialList />
+        </Container>
+      </Box>
+    </Box>
   );
 };
 

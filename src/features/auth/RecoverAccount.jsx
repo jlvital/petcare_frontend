@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Box, Typography, Button } from '@mui/material';
 import api from '../../services/api';
-import FormField from '../../components/common/FormField';
-import CustomSnackbar from '../../components/common/CustomSnackbar'; // ✅
+import PasswordField from '../../components/common/PasswordField';
+import CustomSnackbar from '../../components/common/CustomSnackbar';
 
-const ResetPasswordForm = () => {
+const RecoverAccount = () => {
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     newPassword: '',
@@ -28,6 +29,16 @@ const ResetPasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*?\-+]).{8,}$/;
+    if (!passwordRegex.test(formData.newPassword)) {
+      setSnackbar({
+        open: true,
+        message: "❌ La contraseña debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas, un número y un carácter especial.",
+        severity: "error"
+      });
+      return;
+    }
+
     if (formData.newPassword !== formData.confirmPassword) {
       setSnackbar({
         open: true,
@@ -38,19 +49,25 @@ const ResetPasswordForm = () => {
     }
 
     try {
-      const response = await api.post('/auth/recover-password', {
+      const response = await api.post('/auth/recover-account', {
         token,
-        ...formData
+        newPassword: formData.newPassword,
+        confirmPassword: formData.confirmPassword
       });
+
       setSnackbar({
         open: true,
-        message: response.data,
+        message: response.data?.message || "✅ Tu contraseña ha sido actualizada.",
         severity: "success"
       });
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (err) {
       setSnackbar({
         open: true,
-        message: err.response?.data || "❌ Error al restablecer la contraseña.",
+        message: err.response?.data?.message || "❌ Error al recuperar la cuenta. Inténtalo de nuevo.",
         severity: "error"
       });
     }
@@ -63,29 +80,26 @@ const ResetPasswordForm = () => {
       className="max-w-md mx-auto bg-white p-8 mt-10 rounded-xl shadow-md"
     >
       <Typography variant="h5" className="text-center mb-6">
-        Restablecer contraseña
+        Recuperar cuenta y restablecer contraseña
       </Typography>
 
-      <FormField
+      <PasswordField
         label="Nueva contraseña"
-        type="password"
+        name="newPassword"
         value={formData.newPassword}
         onChange={handleChange}
-        name="newPassword"
       />
-      <FormField
+      <PasswordField
         label="Confirmar nueva contraseña"
-        type="password"
+        name="confirmPassword"
         value={formData.confirmPassword}
         onChange={handleChange}
-        name="confirmPassword"
       />
 
       <Button type="submit" variant="contained" fullWidth className="mt-6">
         Restablecer contraseña
       </Button>
 
-      {/* ✅ Snackbar */}
       <CustomSnackbar
         open={snackbar.open}
         message={snackbar.message}
@@ -96,4 +110,4 @@ const ResetPasswordForm = () => {
   );
 };
 
-export default ResetPasswordForm;
+export default RecoverAccount;

@@ -1,5 +1,5 @@
 import React from 'react';
-import ChangePasswordForm from '../features/auth/changePasswordForm';
+import ChangePasswordForm from '../features/auth/ChangePasswordForm';
 
 const ChangePassword = () => {
   return (

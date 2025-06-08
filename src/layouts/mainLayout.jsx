@@ -1,15 +1,16 @@
-import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-[#f9fbfc] text-[#233b53]">
+    <div className="flex flex-col min-h-screen bg-white text-text">
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <Outlet /> {/* Esto renderiza las páginas como Home, Login, etc. */}
+      
+      <main className="flex-grow w-full max-w-7xl mx-auto px-4 py-8">
+        <Outlet />
       </main>
+      
       <Footer />
     </div>
   );

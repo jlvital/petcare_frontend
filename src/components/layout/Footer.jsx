@@ -9,34 +9,42 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: '#f5f7fa',
-        py: 4,
+        backgroundColor: '#ffffff',
         borderTop: '1px solid #e0e0e0',
-        mt: 8,
+        py: 3,
+        mt: 10,
+        color: '#6b7280',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="md" sx={{ textAlign: 'center' }}>
+        <Typography variant="body2" fontWeight={500}>
+          Cuidamos de tu mascota como uno más de la familia 🐾
+        </Typography>
+
         <Box
           sx={{
             display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
             justifyContent: 'center',
-            alignItems: 'center',
-            gap: 2,
-            textAlign: 'center',
+            gap: 4,
             flexWrap: 'wrap',
+            mt: 2,
+            fontSize: '0.875rem',
           }}
         >
-          <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <LocationOnIcon fontSize="small" /> C/ Mi mascota feliz, 123 - Sevilla
-          </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <LocationOnIcon fontSize="small" /> Sevilla, España
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <PhoneIcon fontSize="small" /> 954 335 599
-          </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <EmailIcon fontSize="small" /> info@petcare360.com
-          </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <EmailIcon fontSize="small" /> info@petcare.com
+          </Box>
         </Box>
+
+        <Typography variant="caption" sx={{ display: 'block', mt: 2 }}>
+          © {new Date().getFullYear()} PetCare. Todos los derechos reservados.
+        </Typography>
       </Container>
     </Box>
   );

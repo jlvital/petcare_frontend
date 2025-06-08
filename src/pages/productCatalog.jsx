@@ -3,10 +3,12 @@ import {
   Container,
   Typography,
   Grid,
-  TextField,
-  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Button,
 } from '@mui/material';
-import ProductCard from '../features/home/productCard';
 
 const productos = [
   {
@@ -38,49 +40,72 @@ const productos = [
 const ProductCatalog = () => {
   const [search, setSearch] = useState('');
 
-  const filteredProducts = productos.filter((p) =>
+  const filtered = productos.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <Box className="bg-[#f0f9f9] min-h-screen py-10">
-      <Container maxWidth="lg">
-        <Typography
-          variant="h4"
-          align="center"
-          sx={{ mb: 6, fontWeight: 'bold', color: 'primary.main' }}
-        >
-          Catálogo de Productos
+    <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Typography variant="h4" align="center" fontWeight="bold" color="primary" gutterBottom>
+        Catálogo de productos
+      </Typography>
+
+      <input
+        type="text"
+        placeholder="Buscar producto..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="block mx-auto w-full sm:w-1/2 px-4 py-2 mt-6 mb-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+
+      <Grid container spacing={4}>
+        {filtered.map((product, i) => (
+          <Grid item key={i} xs={12} sm={6} md={3}>
+            <Card
+              sx={{
+                borderRadius: 3,
+                boxShadow: 3,
+                transition: '0.3s',
+                '&:hover': { transform: 'scale(1.03)', boxShadow: 6 },
+              }}
+            >
+              <CardMedia
+                component="img"
+                height="160"
+                image={product.imageUrl}
+                alt={product.name}
+                sx={{ objectFit: 'contain', p: 2 }}
+              />
+              <CardContent>
+                <Typography variant="subtitle1" fontWeight="bold">{product.name}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {product.description}
+                </Typography>
+                <Typography variant="h6" color="primary" sx={{ mt: 1 }}>
+                  €{product.price.toFixed(2)}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  disabled
+                >
+                  Añadir (simulado)
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
+      {filtered.length === 0 && (
+        <Typography align="center" sx={{ mt: 6 }} color="text.secondary">
+          No se encontraron productos con ese nombre.
         </Typography>
-
-        <TextField
-          fullWidth
-          variant="outlined"
-          placeholder="Buscar producto..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          sx={{ mb: 6 }}
-        />
-
-        {filteredProducts.length > 0 ? (
-          <Grid container columns={12} spacing={4}>
-          {filteredProducts.map((product, idx) => (
-            <Grid gridColumn="span 12" sm="span 6" md="span 3" key={idx}>
-              <ProductCard product={product} />
-            </Grid>
-          ))}
-        </Grid>
-        ) : (
-          <Typography
-            variant="body1"
-            align="center"
-            sx={{ mt: 8, color: 'text.secondary' }}
-          >
-            No se encontraron productos con ese nombre.
-          </Typography>
-        )}
-      </Container>
-    </Box>
+      )}
+    </Container>
   );
 };
 

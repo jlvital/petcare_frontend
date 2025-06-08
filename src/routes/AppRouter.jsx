@@ -1,63 +1,86 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import MainLayout from '../layouts/mainLayout';
+import { Routes, Route } from 'react-router-dom';
+import MainLayout from '../layouts/MainLayout';
+
 import Home from '../pages/home';
 import AuthPage from '../pages/AuthPage';
-import ProductCatalog from '../pages/productCatalog';
-import AdminDashboard from '../pages/dashboard/adminDashboard';
-import ClientDashboard from '../pages/dashboard/clientDashboard';
-import EmployeeDashboard from '../pages/dashboard/employeeDashboard';
-import RegisterEmployeeForm from '../features/admin/registerEmployeeForm';
+import LoginGoogle from '../pages/LoginGoogle';
+import LoginError from '../pages/LoginError';
+import ProductCatalog from '../pages/ProductCatalog';
+import RecoveryForm from '../features/auth/RecoveryForm';
+import RecoverAccount from '../features/auth/RecoverAccount'; // ✅
 
-import RequestPasswordRecoveryForm from '../features/auth/requestPasswordRecoveryForm';
-import ResetPasswordForm from '../features/auth/resetPasswordForm';
-import ChangePasswordForm from '../features/auth/changePasswordForm';
+import Services from '../pages/Services';
+import Reviews from '../pages/Reviews';
+import Contact from '../pages/Contact';
+import AboutUs from '../pages/AboutUs';
+import Gallery from '../pages/Gallery';
+
+import AdminDashboardRouter from './AdminDashboardRouter';
+import ClientDashboardRouter from './ClientDashboardRouter';
+import EmployeeDashboardRouter from './EmployeeDashboardRouter';
 
 import ProtectedRoute from '../components/layout/ProtectedRoute';
+import AdminLayout from '../layouts/AdminLayout';
+import ClientLayout from '../layouts/ClientLayout';
+import EmployeeLayout from '../layouts/EmployeeLayout';
 
 const AppRouter = () => {
   return (
     <Routes>
+      {/* 🔹 RUTAS PÚBLICAS CON LAYOUT GENERAL */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
-      </Route>
+        <Route path="/productos" element={<ProductCatalog />} />
+        <Route path="/servicios" element={<Services />} />
+        <Route path="/opiniones" element={<Reviews />} />
+        <Route path="/quienes-somos" element={<AboutUs />} />
+        <Route path="/contacto" element={<Contact />} />
+        <Route path="/galeria" element={<Gallery />} />
 
-      <>
-        <Route path="/auth" element={<AuthPage />} />
+        {/* 🔐 AUTENTICACIÓN */}
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/register" element={<AuthPage mode="register" />} />
-        <Route path="/productos" element={<ProductCatalog />} /> 
-        <Route path="/forgot-password" element={<RequestPasswordRecoveryForm />} />
-        <Route path="/reset-password" element={<ResetPasswordForm />} />
-        <Route path="/change-password" element={<ChangePasswordForm />} />
+        <Route path="/login-success" element={<LoginGoogle />} />
+        <Route path="/login-error" element={<LoginError />} />
 
-        <Route
-  path="/admin/dashboard"
-  element={
-    <ProtectedRoute allowedRoles={['ADMIN']}>
-      <AdminDashboard />
-    </ProtectedRoute>
-  }
-/>
+        {/* 🔐 RECUPERACIÓN */}
+        <Route path="/forgot-password" element={<RecoveryForm />} /> {/* Introducir email */}
+        <Route path="/recover-account" element={<RecoverAccount />} /> {/* Formulario con token */}
+      </Route>
 
-<Route
-  path="/client/dashboard"
-  element={
-    <ProtectedRoute allowedRoles={['CLIENTE']}>
-      <ClientDashboard />
-    </ProtectedRoute>
-  }
-/>
+      {/* 🔐 RUTAS PROTEGIDAS */}
+      <Route
+        path="/admin/*"
+        element={
+          <ProtectedRoute allowedRoles={['ADMIN']}>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="*" element={<AdminDashboardRouter />} />
+      </Route>
 
-<Route
-  path="/employee/dashboard"
-  element={
-    <ProtectedRoute allowedRoles={['EMPLEADO']}>
-      <EmployeeDashboard />
-    </ProtectedRoute>
-  }
-/>
+      <Route
+        path="/client/*"
+        element={
+          <ProtectedRoute allowedRoles={['CLIENTE']}>
+            <ClientLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="*" element={<ClientDashboardRouter />} />
+      </Route>
 
-      </>
+      <Route
+        path="/employee/*"
+        element={
+          <ProtectedRoute allowedRoles={['EMPLEADO']}>
+            <EmployeeLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="*" element={<EmployeeDashboardRouter />} />
+      </Route>
     </Routes>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import api from '../../services/api';
 import FormField from '../../components/common/FormField';
+import PasswordField from '../../components/common/PasswordField';
 import CustomSnackbar from '../../components/common/CustomSnackbar'; // ✅
 
 const ChangePasswordForm = () => {
@@ -73,19 +74,17 @@ const ChangePasswordForm = () => {
         Cambiar contraseña
       </Typography>
 
-      <FormField
+      <PasswordField
         label="Nueva contraseña"
-        type="password"
+        name="newPassword"
         value={formData.newPassword}
         onChange={handleChange}
-        name="newPassword"
       />
-      <FormField
+      <PasswordField
         label="Confirmar nueva contraseña"
-        type="password"
+        name="confirmPassword"
         value={formData.confirmPassword}
         onChange={handleChange}
-        name="confirmPassword"
       />
 
       <Button type="submit" variant="contained" fullWidth className="mt-6">
