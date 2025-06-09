@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 
-import Home from '../pages/home';
+import Home from '../pages/Home';
 import AuthPage from '../pages/AuthPage';
 import LoginGoogle from '../pages/LoginGoogle';
 import LoginError from '../pages/LoginError';
