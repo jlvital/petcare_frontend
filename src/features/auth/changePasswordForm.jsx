@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import api from '../../services/api';
-import FormField from '../../components/common/FormField';
-import PasswordField from '../../components/common/PasswordField';
-import CustomSnackbar from '../../components/common/CustomSnackbar'; // ✅
+import api from '@/services/api';
+import PasswordField from '@/components/common/PasswordField';
+import CustomSnackbar from '@/components/common/CustomSnackbar'; 
 
 const ChangePasswordForm = () => {
   const [formData, setFormData] = useState({

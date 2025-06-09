@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import {
   Box, Typography, Button, RadioGroup, FormControlLabel, Radio, Alert, FormLabel
 } from '@mui/material';
-import FormField from '../../components/common/FormField';
-import DateField from '../../components/common/DateField';
-import CustomSnackbar from '../../components/common/CustomSnackbar';
-import { getClientProfile, updateClientProfile } from '../../services/clientService';
-import { formContainerStyle } from '../../styles/formStyles';
+import FormField from '@/components/common/FormField';
+import DateField from '@/components/common/DateField';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
+import { getClientProfile, updateClientProfile } from '@/services/clientService';
+import { formContainerStyle } from '@/styles/formStyles';
 
 const ClientProfile = () => {
   const [formData, setFormData] = useState({

@@ -7,8 +7,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
-import CustomSnackbar from '../../components/common/CustomSnackbar';
-import { getAllUsers, updateUserStatus, deleteUser } from '../../services/userService';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
+import { getAllUsers, updateUserStatus, deleteUser } from '@/services/userService';
 
 const USERS_PER_PAGE = 10; // Número de usuarios por página
 

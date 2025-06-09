@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, TextField, Button, Alert, CircularProgress } from '@mui/material';
-import api from '../../services/api';
+import api from '@/services/api';
 
 const EmployeeProfile = () => {
   const [formData, setFormData] = useState({

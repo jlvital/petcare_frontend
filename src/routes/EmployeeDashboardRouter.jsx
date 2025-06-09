@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import EmployeeBookings from '../features/employee/EmployeeBookings';
-import EmployeeTreatments from '../features/employee/EmployeeTreatments';
-import EmployeeVaccines from '../features/employee/EmployeeVaccines';
-import EmployeeProfile from '../features/employee/EmployeeProfile';
-import EmployeeDashboard from '../features/employee/EmployeeDashboard';
+import EmployeeBookings from '@/features/employee/EmployeeBookings';
+import EmployeeTreatments from '@/features/employee/EmployeeTreatments';
+import EmployeeVaccines from '@/features/employee/EmployeeVaccines';
+import EmployeeProfile from '@/features/employee/EmployeeProfile';
+import EmployeeDashboard from '@/features/employee/EmployeeDashboard';
 
 const EmployeeDashboardRouter = () => {
   return (

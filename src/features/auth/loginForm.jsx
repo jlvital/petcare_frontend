@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
-import api from '../../services/api';
-import FormField from '../../components/common/FormField';
-import PasswordField from '../../components/common/PasswordField';
-import CustomSnackbar from '../../components/common/CustomSnackbar';
+import useAuth from '@/hooks/useAuth';
+import api from '@/services/api';
+import FormField from '@/components/common/FormField';
+import PasswordField from '@/components/common/PasswordField';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
 
 const LoginForm = () => {
   const navigate = useNavigate();

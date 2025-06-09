@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import ProductAdmin from '../features/admin/ProductAdmin';
-import RegisterEmployeeForm from '../features/admin/RegisterEmployeeForm';
-import StatisticsPanel from '../features/admin/StatisticsPanel';
-import AccountManager from '../features/admin/AccountManager';
-import AdminDashboard from '../features/admin/AdminDashboard';
+import ProductAdmin from '@/features/admin/ProductAdmin';
+import RegisterEmployeeForm from '@/features/admin/RegisterEmployeeForm';
+import StatisticsPanel from '@/features/admin/StatisticsPanel';
+import AccountManager from '@/features/admin/AccountManager';
+import AdminDashboard from '@/features/admin/AdminDashboard';
 
 const AdminDashboardRouter = () => {
   return (

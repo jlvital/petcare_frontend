@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, MenuItem, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import api from '../../../services/api';
-import FormField from '../../../components/common/FormField';
-import DateField from '../../../components/common/DateField';
-import CustomSnackbar from '../../../components/common/CustomSnackbar';
+import api from '@/services/api';
+import FormField from '@/components/common/FormField';
+import DateField from '@/components/common/DateField';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
 
 const UpdateBookingForm = () => {
   const { id } = useParams(); // id de la cita a modificar

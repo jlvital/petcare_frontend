@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Grid, Paper, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '@/hooks/useAuth';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();

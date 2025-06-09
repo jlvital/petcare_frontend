@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
-import TestimonialCard from '../features/home/TestimonialCard';
+import TestimonialCard from '@/features/home/TestimonialCard';
 
 const opinions = [
   {

@@ -1,6 +1,6 @@
 // src/pages/Gallery.jsx
 import React, { useState, useEffect } from 'react';
-import UploadGalleryImage from '../features/client/UploadGalleryImage';
+import UploadGalleryImage from '@/features/client/UploadGalleryImage';
 import useAuth from '@/hooks/useAuth';
 import {
   Box,

@@ -9,10 +9,10 @@ import {
   Select,
   FormHelperText
 } from '@mui/material';
-import FormField from '../../../components/common/FormField';
-import DateField from '../../../components/common/DateField';
-import CustomSnackbar from '../../../components/common/CustomSnackbar';
-import api from '../../../services/api';
+import FormField from '@/components/common/FormField';
+import DateField from '@/components/common/DateField';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
+import api from '@/services/api';
 import { BOOKING_TYPES } from './bookingTypes';
 
 

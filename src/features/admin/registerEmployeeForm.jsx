@@ -6,10 +6,10 @@ import {
   Alert,
   MenuItem
 } from '@mui/material';
-import FormField from '../../components/common/FormField';
+import FormField from '@/components/common/FormField';
 import dayjs from 'dayjs';
-import DateField from '../../components/common/DateField'; // ✅ Componente fecha formateada
-import api from '../../services/api';
+import DateField from '@/components/common/DateField'; // ✅ Componente fecha formateada
+import api from '@/services/api';
 
 const perfiles = ['VETERINARIO', 'AUXILIAR', 'TECNICO'];
 

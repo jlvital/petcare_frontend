@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import LoginForm from '../features/auth/LoginForm';
-import RegisterForm from '../features/auth/RegisterForm';
-import '../styles/auth.css';
+import LoginForm from '@/features/auth/LoginForm';
+import RegisterForm from '@/features/auth/RegisterForm';
+import '@/styles/auth.css';
 
 const AuthPage = () => {
   const location = useLocation();

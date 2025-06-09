@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Box, Typography, Button } from '@mui/material';
-import api from '../../services/api';
-import PasswordField from '../../components/common/PasswordField';
-import CustomSnackbar from '../../components/common/CustomSnackbar';
+import api from '@/services/api';
+import PasswordField from '@/components/common/PasswordField';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
 
 const RecoverAccount = () => {
   const [searchParams] = useSearchParams();

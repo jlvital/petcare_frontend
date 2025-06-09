@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; // 👈 Nuevo import
-import api from '../../services/api';
-import FormField from '../../components/common/FormField';
-import CustomSnackbar from '../../components/common/CustomSnackbar';
+import api from '@/services/api';
+import FormField from '@/components/common/FormField';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
 
 const RecoveryForm = () => {
   const [email, setEmail] = useState('');

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   Box, Button, Typography, Grid, MenuItem, Checkbox, FormControlLabel
 } from '@mui/material';
-import FormField from '../../components/common/FormField';
+import FormField from '@/components/common/FormField';
 import { registerPet } from './petService';
 
 const GENDER_OPTIONS = ['MACHO', 'HEMBRA', 'OTRO'];

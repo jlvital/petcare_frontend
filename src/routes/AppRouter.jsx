@@ -1,28 +1,28 @@
 import { Routes, Route } from 'react-router-dom';
-import MainLayout from '../layouts/MainLayout';
+import MainLayout from '@/layouts/MainLayout';
 
-import Home from '../pages/Home';
-import AuthPage from '../pages/AuthPage';
-import LoginGoogle from '../pages/LoginGoogle';
-import LoginError from '../pages/LoginError';
-import ProductCatalog from '../pages/ProductCatalog';
-import RecoveryForm from '../features/auth/RecoveryForm';
-import RecoverAccount from '../features/auth/RecoverAccount'; // ✅
+import Home from '@/pages/Home';
+import AuthPage from '@/pages/AuthPage';
+import LoginGoogle from '@/pages/LoginGoogle';
+import LoginError from '@/pages/LoginError';
+import ProductCatalog from '@/pages/ProductCatalog';
+import RecoveryForm from '@/features/auth/RecoveryForm';
+import RecoverAccount from '@/features/auth/RecoverAccount';
 
-import Services from '../pages/Services';
-import Reviews from '../pages/Reviews';
-import Contact from '../pages/Contact';
-import AboutUs from '../pages/AboutUs';
-import Gallery from '../pages/Gallery';
+import Services from '@/pages/Services';
+import Reviews from '@/pages/Reviews';
+import Contact from '@/pages/Contact';
+import AboutUs from '@/pages/AboutUs';
+import Gallery from '@/pages/Gallery';
 
 import AdminDashboardRouter from './AdminDashboardRouter';
 import ClientDashboardRouter from './ClientDashboardRouter';
 import EmployeeDashboardRouter from './EmployeeDashboardRouter';
 
-import ProtectedRoute from '../components/layout/ProtectedRoute';
-import AdminLayout from '../layouts/AdminLayout';
-import ClientLayout from '../layouts/ClientLayout';
-import EmployeeLayout from '../layouts/EmployeeLayout';
+import ProtectedRoute from '@/components/layout/ProtectedRoute';
+import AdminLayout from '@/layouts/AdminLayout';
+import ClientLayout from '@/layouts/ClientLayout';
+import EmployeeLayout from '@/layouts/EmployeeLayout';
 
 const AppRouter = () => {
   return (

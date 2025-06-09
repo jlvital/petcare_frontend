@@ -1,13 +1,13 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import MyPets from '../features/client/MyPets';
-import MyBookings from '../features/client/MyBookings';
-import MyPurchases from '../features/client/MyPurchases';
-import ClientProfile from '../features/client/ClientProfile';
-import ClientDashboard from '../features/client/ClientDashboard';
-import NewBookingForm from '../features/client/bookings/NewBookingForm';
-import UpdateBookingForm from '../features/client/bookings/UpdateBookingForm';
-import BookingPage from '../features/client/bookings/BookingsPage';
+import MyPets from '@/features/client/MyPets';
+import MyBookings from '@/features/client/MyBookings';
+import MyPurchases from '@/features/client/MyPurchases';
+import ClientProfile from '@/features/client/ClientProfile';
+import ClientDashboard from '@/features/client/ClientDashboard';
+import NewBookingForm from '@/features/client/bookings/NewBookingForm';
+import UpdateBookingForm from '@/features/client/bookings/UpdateBookingForm';
+import BookingPage from '@/features/client/bookings/BookingsPage';
 const ClientDashboardRouter = () => {
   return (
     <Routes>

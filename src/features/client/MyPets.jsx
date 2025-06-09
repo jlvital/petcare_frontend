@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Divider } from '@mui/material';
-import PetList from '../pets/PetList';
-import PetForm from '../pets/PetForm';
-import CustomSnackbar from '../../components/common/CustomSnackbar';
+import PetList from '@/features/pets/PetList';
+import PetForm from '@/features/pets/PetForm';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
 
 const MyPets = () => {
   const [reload, setReload] = useState(false);

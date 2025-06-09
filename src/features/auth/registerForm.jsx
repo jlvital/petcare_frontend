@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Typography } from '@mui/material';
-import api from '../../services/api';
-import FormField from '../../components/common/FormField';
-import PasswordField from '../../components/common/PasswordField';
-import CustomSnackbar from '../../components/common/CustomSnackbar';
+import api from '@/services/api';
+import FormField from '@/components/common/FormField';
+import PasswordField from '@/components/common/PasswordField';
+import CustomSnackbar from '@/components/common/CustomSnackbar';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({ name: '', username: '', password: '' });

@@ -3,8 +3,8 @@ import {
   Dialog, DialogTitle, DialogContent, DialogActions,
   Button, MenuItem
 } from '@mui/material';
-import DateField from '../../../components/common/DateField';
-import FormField from '../../../components/common/FormField';
+import DateField from '@/components/common/DateField';
+import FormField from '@/components/common/FormField';
 import { BOOKING_TYPES } from './bookingTypes';
 
 const EditBookingModal = ({ open, onClose, booking, onSave, empleados }) => {

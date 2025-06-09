@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Box } from '@mui/material';
-import HeroSection from '../features/home/HeroSection';
-import TestimonialList from '../features/home/TestimonialList';
+import HeroSection from '@/features/home/HeroSection';
+import TestimonialList from '@/features/home/TestimonialList';
 
 const Home = () => {
   return (

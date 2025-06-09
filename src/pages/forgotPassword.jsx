@@ -1,5 +1,5 @@
 import React from 'react';
-import RequestPasswordRecoveryForm from '../features/auth/RequestPasswordRecoveryForm';
+import RequestPasswordRecoveryForm from '@/features/auth/RequestPasswordRecoveryForm';
 
 const ForgotPassword = () => {
   return (
