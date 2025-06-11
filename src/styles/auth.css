@@ -1,0 +1,194 @@
+/* auth.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  /*background: linear-gradient(to right, #f0f9f9, #c5f2da);*/
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.container {
+  background-color: white;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.6s ease-in-out;
+  background-color: #ffffff;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+.sign-in {
+  left: 0;
+}
+
+.sign-up {
+  left: 0;
+  opacity: 0;
+  z-index: 0;
+}
+
+.container.right-panel-active .sign-in {
+  transform: translateX(100%);
+  z-index: 0;
+}
+
+.container.right-panel-active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Panel derecho */
+.toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0 16px 16px 0;
+  z-index: 3;
+  transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .toggle-container {
+  transform: translateX(-100%);
+}
+
+.toggle {
+  background: linear-gradient(to right, #1c6f6a, #59c1ae);
+  color: #fff;
+  height: 100%;
+  width: 200%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: -100%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+  border-radius: 16px;
+}
+
+.container.right-panel-active .toggle {
+  transform: translateX(50%);
+}
+
+.toggle-panel {
+  width: 50%;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.container button {
+  background-color: #1c6f6a;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 45px;
+  margin-top: 16px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+  background-color: #154d49;
+}
+
+.container a {
+  color: #154d49;
+  font-size: 13px;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.container p {
+  color: #233b53;
+  font-size: 14px;
+  margin: 1.5rem 0;
+}
+
+.container input {
+  background-color: #f4f4f4;
+  border: none;
+  padding: 10px 15px;
+  margin: 8px 0;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Icono del ojo dentro del input */
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 0 0.5rem;
+}
+
+.password-wrapper input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px;
+}
+
+.password-wrapper button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1c6f6a;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .form-container,
+  .toggle-container {
+    position: static;
+    width: 100%;
+    transform: none !important;
+    height: auto;
+  }
+
+  .toggle {
+    display: none;
+  }
+}
